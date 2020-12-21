@@ -1,0 +1,34 @@
+<div class="todos">
+    <div class="todos__header">
+        <div class="container">
+            <todos-todo-form
+                [isDisabled]="isLoading$ | async"
+                (addTodo)="onAddTodo($event)"
+            ></todos-todo-form>
+        </div>
+    </div>
+
+    <div class="todos__content container">
+        <div class="todos-list">
+            <div *ngIf="(todos$ | async).length">
+                <todo-todo-item
+                    *ngFor="let item of todos$ | async"
+                    [item]="item"
+                    (remove)="onRemoveTodo($event)"
+                    (update)="onUpdateTodo($event)"
+                ></todo-todo-item>
+            </div>
+
+            <div *ngIf="!(todos$ | async).length" class="todos-list__empty">
+                <p>No tasks here, You are either a great doer, or a great procrastinator.</p>
+            </div>
+        </div>
+
+        <ng-template #loading>
+            <div class="todos-list__loading">
+                <i class="fa fa-spinner fa-spin"></i>
+                Loading your tasks...
+            </div>
+        </ng-template>
+    </div>
+</div>

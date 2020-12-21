@@ -1,0 +1,32 @@
+<div class="header">
+    <div class="header__content container">
+        <div class="header__content-left">
+            <div class="brand">
+                Todo App
+            </div>
+
+            <div class="info">
+                <a (click)="toggleShowInfo()" class="info__button">
+                    <i class="fas fa-info-circle"></i>
+                </a>
+
+                <div *ngIf="showInfo" class="info__content">
+                    Inspired by
+                    <a [href]="rParkGithubUrl" target="_blank">RichardPark</a>'s
+                    <a [href]="rParkAppUrl" target="_blank">Todo Angular Firebase</a>,
+                    developed by <a [href]="rAuthorGithubUrl" target="_blank">Miguel A. Arenas</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="header__content-right">
+            <a class="sign-out-button" *ngIf="isAuthenticated" (click)="signOut()">
+                Sign Out
+            </a>
+    
+            <a class="github" [href]="appGithubUrl" target="_blank">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+    </div>
+</div>
